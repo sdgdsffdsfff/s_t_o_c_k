@@ -1,0 +1,43 @@
+To run the example, follow these steps:
+
+Save the bundle of JMX API sample classes, jmx_examples.zip, to your working directory, work_dir.
+Unzip the bundle of sample classes by using the following command in a terminal window.
+unzip jmx_examples.zip
+Compile the example Java classes from within the work_dir directory.
+javac com/example/*.java
+If you are running the Java Development Kit (JDK) version 6, start the Main application with the following command.
+java com.example.Main
+If you are running a JDK version that is older than version 6, you will need to start the Main application with the following option specified, to expose the application for monitoring and management.
+
+java -Dcom.sun.management.jmxremote example.Main
+A confirmation that Main is waiting for something to happen is displayed.
+
+Start JConsole in a different terminal window on the same machine.
+jconsole
+The New Connection dialog box is displayed, presenting a list of running JMX agents that you can connect to.
+
+In the New Connection dialog box, select com.example.Main from the list and click Connect.
+A summary of your platform's current activity is displayed.
+
+Click the MBeans tab.
+This panel shows all the MBeans that are currently registered in the MBean server.
+
+In the left frame, expand the com.example node in the MBean tree.
+You see the example MBean Hello that was created and registered by Main. If you click Hello, you see its associated Attributes and Operations nodes in the MBean tree.
+
+Expand the Attributes node of the Hello MBean in the MBean tree.
+The MBean attributes that were defined by the Hello class are displayed.
+
+Change the value of the CacheSize attribute to 150.
+In the terminal window in which you started Main, a confirmation of this attribute change is generated.
+
+Expand the Operations node of the Hello MBean in the MBean tree.
+The two operations declared by the Hello MBean, sayHello() and add(), are visible.
+
+Invoke the sayHello() operation by clicking the sayHello button.
+A JConsole dialog box informs you that the method was invoked successfully. The message "hello, world" is generated in the terminal window in which Main is running.
+
+Provide two integers for the add() operation to add and click the add button.
+The answer is displayed in a JConsole dialog box.
+
+To close JConsole, select Connection -> Exit.

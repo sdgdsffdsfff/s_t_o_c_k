@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="username" value="${mail.username}"></property>
+		<property name="password" value="${mail.password}"></property>
+		<property name="host" value="${mail.host}"></property>
+	</bean>
+	
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="${mail.from}"></property>
+	</bean>
+
+   <!-- 配置发送模板bean-->
+	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+	<property name="templateLoaderPaths" value="classpath:mailTemplate" /><!-- 模板路径位置 -->
+	<property name="freemarkerSettings">
+		<props>
+			<prop key="template_update_delay">1800</prop><!-- 模板更新延时 -->
+			<prop key="default_encoding">UTF-8</prop>
+			<prop key="locale">zh_CN</prop>
+		</props>
+	</property>
+</bean>
+</beans>
