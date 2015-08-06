@@ -35,8 +35,8 @@ public class HttpClient {
 		long begintime = System.currentTimeMillis();
         
 		//"300072.SZ",38.99,40.74,"8/4/2015","2:29pm",+1.75,39.10,41.58,38.20
-        URL url = new URL("http://download.finance.yahoo.com/d/quotes.csv?s=300072.SZ&f=spl1d1t1c1ohg");
-        //URL url = new URL("http://ichart.finance.yahoo.com/table.csv?s=000001.sz&c=2015&a=7&b=20&f=2015&d=8&e=4");
+//        URL url = new URL("http://download.finance.yahoo.com/d/quotes.csv?s=300072.SZ&f=spl1d1t1c1ohg");
+        URL url = new URL("http://ichart.finance.yahoo.com/table.csv?s=000003.sz&d=8&e=4&f=2015&a=7&b=11&c=2015");
         HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
         urlcon.connect();         //获取连接
         InputStream is = urlcon.getInputStream();

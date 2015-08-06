@@ -9,7 +9,7 @@
 	<http pattern="/resources/**" security="none" />
 	<http auto-config="true" access-denied-page="/user/login">
 		<intercept-url pattern="/user/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/**" access="ROLE_USER" />
+		<intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
 		<form-login login-page="/user/login" authentication-failure-url="/user/login?error=true" default-target-url="/"/>
 		<logout invalidate-session="true" logout-success-url="/user/login" />
 	</http>

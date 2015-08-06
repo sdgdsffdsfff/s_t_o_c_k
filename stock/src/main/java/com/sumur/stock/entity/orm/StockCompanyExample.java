@@ -303,6 +303,76 @@ public class StockCompanyExample {
             addCriterion("code not between", value1, value2, "code");
             return (Criteria) this;
         }
+
+        public Criteria andExtIsNull() {
+            addCriterion("ext is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtIsNotNull() {
+            addCriterion("ext is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtEqualTo(String value) {
+            addCriterion("ext =", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtNotEqualTo(String value) {
+            addCriterion("ext <>", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtGreaterThan(String value) {
+            addCriterion("ext >", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtGreaterThanOrEqualTo(String value) {
+            addCriterion("ext >=", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtLessThan(String value) {
+            addCriterion("ext <", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtLessThanOrEqualTo(String value) {
+            addCriterion("ext <=", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtLike(String value) {
+            addCriterion("ext like", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtNotLike(String value) {
+            addCriterion("ext not like", value, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtIn(List<String> values) {
+            addCriterion("ext in", values, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtNotIn(List<String> values) {
+            addCriterion("ext not in", values, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtBetween(String value1, String value2) {
+            addCriterion("ext between", value1, value2, "ext");
+            return (Criteria) this;
+        }
+
+        public Criteria andExtNotBetween(String value1, String value2) {
+            addCriterion("ext not between", value1, value2, "ext");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

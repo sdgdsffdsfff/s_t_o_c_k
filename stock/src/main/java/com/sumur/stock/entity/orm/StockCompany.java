@@ -7,6 +7,8 @@ public class StockCompany {
 
     private String code;
 
+    private String ext;
+
     public Long getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class StockCompany {
 
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext == null ? null : ext.trim();
     }
 }

@@ -23,6 +23,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath*:/properties/mybatis.properties</value>
+				<value>classpath*:/properties/thread-pool.properties</value>
 				<value>classpath*:/properties/mail.properties</value>
 			</list>
 		</property>

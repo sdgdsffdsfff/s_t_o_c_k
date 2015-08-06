@@ -23,12 +23,17 @@ xmlns:aop="http://www.springframework.org/schema/aop"
 	
 	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:/com/sumur/stock/dao/mapper/impl/*Mapper.xml" />
+		 <property name="mapperLocations">
+            <array>
+                <value>classpath*:mapper/**/*.xml</value>
+                <value>classpath*:custom/**/*.xml</value>
+            </array>
+        </property>
 	</bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sessionFactory"/>      
-       <property name="basePackage" value="com.sumur.stock.dao.mapper" />
+       <property name="basePackage" value="com.sumur.stock.dao.mapper,com.sumur.stock.dao.custom" />
     </bean>
 	
 	<!-- 由spring管理mybatis的事务 -->  
@@ -37,7 +42,7 @@ xmlns:aop="http://www.springframework.org/schema/aop"
     </bean> 
 
 	<!-- 如果使用@Transactional,就不使用默认配置 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="save*" rollback-for="java.lang.Exception" propagation="REQUIRED" />
 			<tx:method name="update*" rollback-for="java.lang.Exception" propagation="REQUIRED" />
@@ -56,6 +61,6 @@ xmlns:aop="http://www.springframework.org/schema/aop"
 	<aop:config>
 		<aop:pointcut id="service" expression="execution(* com.sumur.stock.service..*.* (..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="service" />	
-	</aop:config>	
+	</aop:config>	 -->
 	
 </beans>

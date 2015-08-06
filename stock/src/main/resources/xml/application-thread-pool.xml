@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- taskExecutor  哪里需要用到taskExecutor,就将其注入即可使用-->
+	<bean id="initDataTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="${thread.corePoolSize}" />
+		<property name="maxPoolSize" value="${thread.maxPoolSize}" />
+		<property name="keepAliveSeconds" value="${thread.keepAliveSeconds}" />
+		<property name="queueCapacity" value="${thread.queueCapacity}" />
+		<property name="rejectedExecutionHandler" ref="handlerPoolExecutor" />
+	</bean>
+
+	<!-- rejectedExecutionHandler -->
+	<!-- 自定义处理机制 -->
+	<!-- <bean id="handlerPoolExecutor" class="com.sumur.stock.pool.thread.DefaultRejectedHandle" /> -->
+	<!-- 使用java自带的处理机制 -->
+	<bean id="handlerPoolExecutor" class="java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy" />
+</beans>

@@ -21,7 +21,7 @@ public class GenMain {
     public void testDemo() {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
-        String genCfg = "/com/sumur/stock/test/auto/mybatis/conf/mbgConfiguration.xml";
+        String genCfg = "/mybatis/mbgConfiguration.xml";
         File configFile = new File(GenMain.class.getResource(genCfg).getFile());
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;

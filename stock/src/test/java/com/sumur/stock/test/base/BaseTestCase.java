@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 @ContextConfiguration(locations = { 
 		"classpath:/xml/application-config.xml", 
 		"classpath:/xml/application-mybatis.xml", 
-		"classpath:/xml/application-mail.xml"})
+		"classpath:/xml/application-mail.xml", 
+		"classpath:/xml/application-thread-pool.xml"})
 // 继承AbstractTransactionalJUnit4SpringContextTests，实现事务回滚
 public abstract class BaseTestCase extends AbstractTransactionalJUnit4SpringContextTests {
 }
