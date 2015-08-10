@@ -63,16 +63,16 @@ public class Locks extends TestMainClient {
     @Override
     public void process(WatchedEvent event) {
         if(event.getType() == Event.EventType.NodeDeleted){
-            System.out.println("�õ�֪ͨ");
+            System.out.println("得到通知");
             super.process(event);
             doAction();
         }
     }
     /**
-     * ִ����������
+     * 执行其他任务
      */
     private void doAction(){
-        System.out.println("ͬ�������Ѿ��õ�ͬ�������Կ�ʼִ�к����������");
+        System.out.println("同步队列已经得到同步，可以开始执行后面的任务了");
     }
 
     public static void main(String[] args) {

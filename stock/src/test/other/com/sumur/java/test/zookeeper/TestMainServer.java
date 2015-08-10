@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created Date: 2010-9-3 16:17:21
  */
 public class TestMainServer extends ZooKeeperServerMain {
-    public static final int CLIENT_PORT = 3181;
+    public static final int CLIENT_PORT = 2181;
     public static class MainThread extends Thread {
         final File confFile;
         final TestMainServer main;

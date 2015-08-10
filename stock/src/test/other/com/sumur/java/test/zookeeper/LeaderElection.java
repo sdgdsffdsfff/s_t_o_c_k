@@ -72,23 +72,23 @@ public class LeaderElection extends TestMainClient {
     @Override
     public void process(WatchedEvent event) {
         if (event.getPath().equals(root + "/leader") && event.getType() == Event.EventType.NodeCreated) {
-            System.out.println("�õ�֪ͨ");
+            System.out.println("得到通知");
             super.process(event);
             following();
         }
     }
 
     void leading() {
-        System.out.println("��Ϊ�쵼��");
+        System.out.println("成为领导者");
     }
 
     void following() {
-        System.out.println("��Ϊ���Ա");
+        System.out.println("成为组成员");
     }
 
     public static void main(String[] args) {
         TestMainServer.start();
-        String connectString = "localhost:" + TestMainServer.CLIENT_PORT;
+        String connectString = "172.17.0.1:" + TestMainServer.CLIENT_PORT;
 
         LeaderElection le = new LeaderElection(connectString, "/GroupMembers");
         try {

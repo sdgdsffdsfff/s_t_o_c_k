@@ -44,6 +44,7 @@
 		<joda-time.version>2.8.1</joda-time.version>
 		<!-- zookeeper -->
 		<zookeeper.version>3.4.6</zookeeper.version>
+		<zkclient.version>0.3</zkclient.version>
 		<!-- jedis -->
 		<jedis.version>2.6.3</jedis.version>
 
@@ -331,10 +332,16 @@
 			<version>${joda-time.version}</version>
 		</dependency>
 		
+		<!-- zookeeper -->
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
 			<version>${zookeeper.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>${zkclient.version}</version>
 		</dependency>
 		
 		<dependency>

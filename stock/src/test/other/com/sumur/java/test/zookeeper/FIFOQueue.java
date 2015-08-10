@@ -42,7 +42,7 @@ public class FIFOQueue extends TestMainClient{
         }
     }
     /**
-     * �����
+     * 生产者
      *
      * @param i
      * @return
@@ -60,7 +60,7 @@ public class FIFOQueue extends TestMainClient{
 
 
     /**
-     * �����
+     * 消费者
      *
      * @return
      * @throws KeeperException
@@ -96,7 +96,7 @@ public class FIFOQueue extends TestMainClient{
     }
 
     public static void main(String args[]) {
-        //����Server
+        //启动Server
         TestMainServer.start();
         String connectString = "localhost:"+TestMainServer.CLIENT_PORT;
 

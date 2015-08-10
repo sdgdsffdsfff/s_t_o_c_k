@@ -11,10 +11,9 @@ import org.apache.zookeeper.ZooKeeper;
 import org.junit.Test;
 
 public class ZKtest {
-	@Test
-	public void test1() throws IOException, KeeperException, InterruptedException {
+	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
 		// 创建一个与服务器的连接
-		ZooKeeper zk = new ZooKeeper("192.168.106.106:2181", 12000, new Watcher() {
+		ZooKeeper zk = new ZooKeeper("localhost:2181", 12000, new Watcher() {
 			// 监控所有被触发的事件
 			public void process(WatchedEvent event) {
 				System.out.println("已经触发了" + event.getType() + "事件！");

@@ -24,11 +24,11 @@ public class Synchronizing extends TestMainClient {
     public static final Logger logger = Logger.getLogger(Synchronizing.class);
 
     /**
-     * ���캯��
+     * 构造函数
      *
-     * @param connectString ����������
-     * @param root ��Ŀ¼
-     * @param size ���д�С
+     * @param connectString 服务器连接
+     * @param root 根目录
+     * @param size 队列大小
      */
     Synchronizing(String connectString, String root, int size) {
         super(connectString);
@@ -56,7 +56,7 @@ public class Synchronizing extends TestMainClient {
     }
 
     /**
-     * �������
+     * 加入队列
      *
      * @return
      * @throws KeeperException
@@ -79,21 +79,21 @@ public class Synchronizing extends TestMainClient {
     @Override
     public void process(WatchedEvent event) {
         if(event.getPath().equals(root + "/start") && event.getType() == Event.EventType.NodeCreated){
-            System.out.println("�õ�֪ͨ");
+            System.out.println("得到通知");
             super.process(event);
             doAction();
         }
     }
 
     /**
-     * ִ����������
+     * 执行其他任务
      */
     private void doAction(){
-        System.out.println("ͬ�������Ѿ��õ�ͬ�������Կ�ʼִ�к����������");
+        System.out.println("同步队列已经得到同步，可以开始执行后面的任务了");
     }
 
     public static void main(String args[]) {
-        //����Server
+        //启动Server
         TestMainServer.start();
         String connectString = "localhost:"+TestMainServer.CLIENT_PORT;
         int size = 1; 
@@ -107,4 +107,3 @@ public class Synchronizing extends TestMainClient {
         }
     }
 }
-

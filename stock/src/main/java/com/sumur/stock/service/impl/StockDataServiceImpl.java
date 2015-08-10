@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,11 @@ import com.sumur.stock.util.LoggerUtil;
 @Service
 public class StockDataServiceImpl implements StockDataService {
 	protected static final Logger logger = LoggerUtil.getLogger(StockDataServiceImpl.class);
+	//批量插入数据时,单次插入数据条数
 	private static final Integer INSERT_TEMP = 200;
-
+	//连接失败后重试次数
+	private static final Integer TRY_TIME = 3;
+	
 	@Autowired
 	private StockCompanyMapper stockCompanyMapper;
 
@@ -77,7 +81,7 @@ public class StockDataServiceImpl implements StockDataService {
 		return null;
 	}
 
-	class InitDataTask implements Runnable {
+	class InitDataTask implements Callable<StockData> ,Runnable{
 		private String companyCode;
 		private String companyExt;
 		private static final String YOOH_URL = "http://ichart.finance.yahoo.com/table.csv?s=";
@@ -87,6 +91,13 @@ public class StockDataServiceImpl implements StockDataService {
 			this.companyExt = c.getExt();
 		}
 
+		@Override
+		public StockData call() throws Exception {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		
 		@Override
 		@Transactional
 		public void run() {
@@ -101,6 +112,7 @@ public class StockDataServiceImpl implements StockDataService {
 				sd.setCode(companyCode);
 				sdList.add(sd);
 			}
+			//批量插数据
 			if (sdList.size() > 0) {
 				int index = 0;
 				while ((index + INSERT_TEMP) < sdList.size()) {
@@ -147,29 +159,23 @@ public class StockDataServiceImpl implements StockDataService {
 				while ((l = buffer.readLine()) != null) {
 					results.add(l);
 				}
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
 				if (buffer != null) {
-					try {
-						buffer.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					try {buffer.close();} 
+					catch (IOException e) {e.printStackTrace();}
 				}
 				if (ins != null) {
-					try {
-						ins.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					try {ins.close();} 
+					catch (IOException e) {e.printStackTrace();}
 				}
 				urlcon.disconnect();
 			}
 			return results;
 		}
+
+		
 	}
 
 }

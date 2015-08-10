@@ -1,11 +1,11 @@
 package com.sumur.java.test.zookeeper;
 
+import java.io.IOException;
+
 import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-
-import java.io.IOException;
 
 /**
  * TestMainClient
@@ -18,9 +18,6 @@ public class TestMainClient implements Watcher {
     protected static Integer mutex;
     int sessionTimeout = 10000;
     protected String root;
-    
-
-    
 
     public TestMainClient(String connectString) {
         if(zk == null){
@@ -28,7 +25,7 @@ public class TestMainClient implements Watcher {
 
                 String configFile = this.getClass().getResource("/").getPath()+"net/xulingbo/zookeeper/log4j/log4j.xml";
                 DOMConfigurator.configure(configFile);
-                System.out.println("����һ���µ�����:");
+                System.out.println("创建一个新的连接:");
                 zk = new ZooKeeper(connectString, sessionTimeout, this);
                 mutex = new Integer(-1);
             } catch (IOException e) {
