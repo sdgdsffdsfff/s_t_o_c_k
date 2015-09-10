@@ -47,6 +47,8 @@
 		<zkclient.version>0.3</zkclient.version>
 		<!-- jedis -->
 		<jedis.version>2.6.3</jedis.version>
+		<!-- smack -->
+		<smack.version>4.0.2</smack.version>
 
 		<!-- apache commons -->
 		<commons-lang.version>2.5</commons-lang.version>
@@ -349,6 +351,21 @@
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smack-core</artifactId>
+			<version>${smack.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smack-tcp</artifactId>
+			<version>${smack.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.igniterealtime.smack</groupId>
+			<artifactId>smack-extensions</artifactId>
+			<version>${smack.version}</version>
+		</dependency>	
 	</dependencies>
 	<build>
 		<plugins>

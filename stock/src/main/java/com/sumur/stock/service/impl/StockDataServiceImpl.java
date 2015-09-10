@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class StockDataServiceImpl implements StockDataService {
 	//批量插入数据时,单次插入数据条数
 	private static final Integer INSERT_TEMP = 200;
 	//连接失败后重试次数
-	private static final Integer TRY_TIME = 3;
+	private static final Integer RETRY_TIME = 3;
 	
 	@Autowired
 	private StockCompanyMapper stockCompanyMapper;
