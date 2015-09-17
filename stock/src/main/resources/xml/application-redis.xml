@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+		<property name="minIdle" value="${redis.minidle}"></property>
+		<property name="maxIdle" value="${redis.maxidle}"></property>
+		<property name="maxTotal" value="${redis.maxtotal}"></property>
+		<property name="maxWaitMillis" value="${redis.maxwaitmillis}"></property>
+		<property name="testWhileIdle" value="${redis.testWhileIdle}"></property>
+		<property name="minEvictableIdleTimeMillis" value="${redis.minEvictableIdleTimeMillis}"></property>
+		<property name="softMinEvictableIdleTimeMillis" value="${redis.softMinEvictableIdleTimeMillis}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}"></property>
+	</bean>
+	
+	<bean id="redisService" class="com.sumur.stock.pool.jedis.RedisService" init-method="init">
+		<property name="masters" value="${redis.masters}"></property>
+		<property name="sentinels" value="${redis.sentinels}"></property>
+		<property name="timeout" value="${redis.timeout}"></property>
+		<property name="config" ref="genericObjectPoolConfig"></property>
+	</bean>
+</beans>
+
