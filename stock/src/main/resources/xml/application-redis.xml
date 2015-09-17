@@ -13,11 +13,11 @@
 		<property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}"></property>
 	</bean>
 	
-	<bean id="redisService" class="com.sumur.stock.pool.jedis.RedisService" init-method="init">
-		<property name="masters" value="${redis.masters}"></property>
-		<property name="sentinels" value="${redis.sentinels}"></property>
-		<property name="timeout" value="${redis.timeout}"></property>
-		<property name="config" ref="genericObjectPoolConfig"></property>
+	<bean id="shardedJedisSentinelPool" class="com.sumur.stock.pool.jedis.ShardedJedisSentinelPool">
+		<constructor-arg name="masterNames" value="${redis.masters}"></constructor-arg>
+		<constructor-arg name="sentinels" value="${redis.sentinels}"></constructor-arg>
+		<constructor-arg name="timeout" value="${redis.timeout}"></constructor-arg>
+		<constructor-arg name="poolConfig" ref="genericObjectPoolConfig"></constructor-arg>
 	</bean>
 </beans>
 

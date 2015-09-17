@@ -26,7 +26,7 @@ import redis.clients.util.Hashing;
 import redis.clients.util.Pool;
 
 /**
- * 支持客户端主从切换和shard的jedis连接池实现
+ * 支持客户端主从切换和shard的jedis连接池实现,使用到的地方可以直接autoware
  * 
  * @author upton
  *
